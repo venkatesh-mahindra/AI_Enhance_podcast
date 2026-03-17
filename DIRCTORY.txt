@@ -1,0 +1,234 @@
+pdf-podcast-converter/
+│
+├── README.md
+├── LICENSE
+├── .gitignore
+├── docker-compose.yml
+├── .env.example
+│
+├── backend/
+│   ├── app.py                          # Main Flask application ✅
+│   ├── pdf_processor.py                # PDF extraction module ✅
+│   ├── image_analyzer.py               # Image analysis with BLIP & ViT  ✅
+│   ├── voice_cloner.py                 # Voice cloning & TTS module ✅
+│   ├── podcast_generator.py            # Podcast script & audio generation ✅
+│   ├── character_detector.py           # Multi-narrator character detection ✅
+│   ├── celery_app.py                   # Celery async tasks configuration
+│   ├── monitoring.py                   # Monitoring & logging setup
+│   ├── download_models.py              # AI model download script
+│   ├── requirements.txt                # Python dependencies
+│   ├── requirements-dev.txt            # Development dependencies
+│   ├── Dockerfile                      # Backend Docker image
+│   ├── .env                            # Environment variables (create from .env.example)
+│   ├── .dockerignore
+│   │
+│   ├── default_voices/                 # Default voice samples
+│   │   ├── male_sample.wav
+│   │   └── female_sample.wav
+│   │
+│   ├── temp_uploads/                   # Temporary file storage
+│   │   └── .gitkeep
+│   │
+│   ├── logs/                           # Application logs
+│   │   ├── app.log
+│   │   └── error.log
+│   │
+│   └── tests/                          # Backend tests
+│       ├── __init__.py
+│       ├── test_api.py                 # API endpoint tests
+│       ├── test_pdf_processor.py
+│       ├── test_image_analyzer.py
+│       ├── test_voice_cloner.py
+│       ├── test_character_detector.py
+│       └── test_files/
+│           ├── test.pdf
+│           └── test_voice.wav
+│
+├── frontend/
+│   ├── public/
+│   │   ├── index.html
+│   │   ├── favicon.ico
+│   │   ├── logo192.png
+│   │   ├── logo512.png
+│   │   ├── manifest.json
+│   │   └── robots.txt
+│   │
+│   ├── src/
+│   │   ├── App.js                      # Main React component
+│   │   ├── App.css
+│   │   ├── index.js
+│   │   ├── index.css
+│   │   ├── config.js                   # API configuration
+│   │   │
+│   │   ├── components/                 # React components
+│   │   │   ├── PdfUpload.js
+│   │   │   ├── VoiceSelector.js
+│   │   │   ├── LanguageSelector.js
+│   │   │   ├── CharacterDisplay.js
+│   │   │   ├── ProgressBar.js
+│   │   │   └── PodcastPlayer.js
+│   │   │
+│   │   └── utils/
+│   │       ├── api.js                  # API helper functions
+│   │       └── constants.js
+│   │
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── Dockerfile                      # Frontend Docker image
+│   ├── nginx.conf                      # Nginx configuration for production
+│   ├── .dockerignore
+│   ├── .env.example
+│   └── tailwind.config.js
+│
+├── nginx/
+│   ├── nginx.conf                      # Main Nginx reverse proxy config
+│   ├── ssl/                            # SSL certificates
+│   │   ├── fullchain.pem
+│   │   └── privkey.pem
+│   └── Dockerfile                      # Nginx Docker image (optional)
+│
+├── docs/
+│   ├── SETUP_GUIDE.md                  # Complete setup instructions
+│   ├── DEPLOYMENT_GUIDE.md             # Production deployment guide
+│   ├── ARCHITECTURE.md                 # System architecture documentation
+│   ├── API_DOCUMENTATION.md            # API endpoint documentation
+│   ├── VOICE_FEATURES.md               # Voice options feature guide
+│   ├── MULTI_NARRATOR_GUIDE.md         # Multi-narrator feature guide
+│   ├── COMPETITIVE_ADVANTAGE.md        # Market differentiation
+│   ├── VOICE_SETUP_GUIDE.md            # Voice setup & usage guide
+│   ├── TROUBLESHOOTING.md              # Common issues & solutions
+│   └── CONTRIBUTING.md                 # Contribution guidelines
+│
+├── scripts/
+│   ├── setup.sh                        # Initial setup script
+│   ├── deploy.sh                       # Deployment script
+│   ├── backup.sh                       # Backup script for S3
+│   ├── test.sh                         # Run all tests
+│   └── cleanup.sh                      # Cleanup old files
+│
+├── kubernetes/                         # Kubernetes deployment configs
+│   ├── namespace.yaml
+│   ├── configmap.yaml
+│   ├── secrets.yaml
+│   ├── backend-deployment.yaml
+│   ├── frontend-deployment.yaml
+│   ├── worker-deployment.yaml
+│   ├── redis-deployment.yaml
+│   ├── services.yaml
+│   └── ingress.yaml
+│
+└── .github/                            # GitHub specific files
+    ├── workflows/
+    │   ├── ci.yml                      # Continuous Integration
+    │   ├── deploy.yml                  # Deployment workflow
+    │   └── tests.yml                   # Automated testing
+    │
+    ├── ISSUE_TEMPLATE/
+    │   ├── bug_report.md
+    │   └── feature_request.md
+    │
+    └── PULL_REQUEST_TEMPLATE.md
+```
+
+---
+
+## 📄 **File Details by Category**
+
+### **🔹 Root Level Files**
+```
+pdf-podcast-converter/
+├── README.md                    # Main project documentation
+├── LICENSE                      # MIT License
+├── .gitignore                   # Git ignore rules
+├── docker-compose.yml           # Multi-container orchestration
+└── .env.example                 # Environment variables template
+```
+
+### **🔹 Backend Files (Python/Flask)**
+```
+backend/
+├── app.py                       # Main Flask application (REST API)    
+├── pdf_processor.py             # PDF text & image extraction
+├── image_analyzer.py            # BLIP & ViT image analysis
+├── voice_cloner.py              # Voice cloning with XTTS v2
+├── podcast_generator.py         # Script creation & audio generation
+├── character_detector.py        # Multi-narrator detection ⭐ NEW
+├── celery_app.py                # Async task processing
+├── monitoring.py                # Prometheus metrics & logging
+├── download_models.py           # Download AI models script
+├── requirements.txt             # Python dependencies
+├── requirements-dev.txt         # Dev dependencies (pytest, flake8)
+├── Dockerfile                   # Backend container image
+└── .env                         # Environment variables (DO NOT COMMIT)
+```
+
+### **🔹 Frontend Files (React)**
+```
+frontend/
+├── public/
+│   ├── index.html               # Main HTML file
+│   └── favicon.ico              # App icon
+│
+├── src/
+│   ├── App.js                   # Main component with voice selection UI
+│   ├── index.js                 # React entry point
+│   ├── config.js                # API URL configuration
+│   │
+│   ├── components/              # Reusable React components
+│   │   ├── PdfUpload.js         # PDF upload component
+│   │   ├── VoiceSelector.js     # Voice selection grid
+│   │   ├── CharacterDisplay.js  # Character info display ⭐ NEW
+│   │   └── PodcastPlayer.js     # Audio player
+│   │
+│   └── utils/
+│       └── api.js               # API helper functions
+│
+├── package.json                 # Node.js dependencies
+├── Dockerfile                   # Frontend container image
+├── nginx.conf                   # Nginx config for serving React
+└── tailwind.config.js           # Tailwind CSS configuration
+```
+
+### **🔹 Documentation Files**
+```
+docs/
+├── SETUP_GUIDE.md               # Getting started guide
+├── DEPLOYMENT_GUIDE.md          # AWS/GCP/K8s deployment
+├── ARCHITECTURE.md              # System design & architecture
+├── API_DOCUMENTATION.md         # API endpoints reference
+├── VOICE_FEATURES.md            # Voice options documentation
+├── MULTI_NARRATOR_GUIDE.md      # Multi-narrator feature guide ⭐ NEW
+├── COMPETITIVE_ADVANTAGE.md     # Why we're better than competitors
+├── VOICE_SETUP_GUIDE.md         # Voice recording tips
+├── TROUBLESHOOTING.md           # Common issues & fixes
+└── CONTRIBUTING.md              # How to contribute
+```
+
+### **🔹 Configuration Files**
+```
+Root & Config Files:
+├── docker-compose.yml           # Docker services orchestration
+├── .env.example                 # Template for environment variables
+├── .gitignore                   # Git ignore patterns
+│
+nginx/
+└── nginx.conf                   # Reverse proxy configuration
+│
+kubernetes/
+├── configmap.yaml               # K8s configuration
+├── secrets.yaml                 # K8s secrets
+└── [other k8s configs]          # Deployment configurations
+```
+
+### **🔹 Scripts & Automation**
+```
+scripts/
+├── setup.sh                     # Initial project setup
+├── deploy.sh                    # Deploy to production
+├── backup.sh                    # Backup S3 buckets
+├── test.sh                      # Run all tests
+└── cleanup.sh                   # Clean temporary files
+
+
+
+C:\Program Files\espeak-ng-1.52.0\espeak-ng-1.52.0
